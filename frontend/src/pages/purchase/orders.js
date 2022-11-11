@@ -9,6 +9,9 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import TextField from "@mui/material/TextField";
 import Header from "../../components/Header";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Button } from "@mui/material";
 
 const columns = [
   { id: "name", label: "Name", minWidth: 170 },
@@ -60,6 +63,21 @@ const rows = [
 ];
 
 export default function Orders() {
+  const [order, setOrder] = useState([]);
+  const getRequest = () => {
+    axios
+      .get(`http://localhost:9999/ordermanagement`)
+      .then((response) => {
+        setOrder(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getRequest();
+  }, [order]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -74,7 +92,6 @@ export default function Orders() {
 
   return (
     <div>
-      <Header />
       <div className="search">
         <TextField
           id="outlined-multiline-flexible"
@@ -89,46 +106,33 @@ export default function Orders() {
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
-                <TableCell align="center" colSpan={2}>
-                  Country
-                </TableCell>
-                <TableCell align="center" colSpan={3}>
-                  Details
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                {columns.map((column) => (
-                  <TableCell
-                    key={column.id}
-                    align={column.align}
-                    style={{ top: 57, minWidth: column.minWidth }}
-                  >
-                    {column.label}
-                  </TableCell>
-                ))}
+                <TableCell style={{ top: 57 }}>No</TableCell>
+                <TableCell style={{ top: 57 }}>Site Code</TableCell>
+                <TableCell style={{ top: 57 }}>Item Code</TableCell>
+                <TableCell style={{ top: 57 }}>Status</TableCell>
+                <TableCell style={{ top: 57 }}>Last Date</TableCell>
+                <TableCell style={{ top: 57 }}>Created Date</TableCell>
+
+                <TableCell style={{ top: 57 }}>Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows
+              {order
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
                   return (
-                    <TableRow
-                      hover
-                      role="checkbox"
-                      tabIndex={-1}
-                      key={row.code}
-                    >
-                      {columns.map((column) => {
-                        const value = row[column.id];
-                        return (
-                          <TableCell key={column.id} align={column.align}>
-                            {column.format && typeof value === "number"
-                              ? column.format(value)
-                              : value}
-                          </TableCell>
-                        );
-                      })}
+                    <TableRow hover role="checkbox">
+                      <TableCell>{row.no}</TableCell>
+                      <TableCell>{row.sitecode}</TableCell>
+                      <TableCell>{row.itemcode}</TableCell>
+                      <TableCell>{row.status}</TableCell>
+                      <TableCell>{row.cdate}</TableCell>
+                      <TableCell>{row.ldate}</TableCell>
+                      <TableCell>
+                        <a href="/purchaseorder">
+                          <Button> Action</Button>{" "}
+                        </a>
+                      </TableCell>
                     </TableRow>
                   );
                 })}

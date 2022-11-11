@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = ["Orders", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function Header() {
@@ -36,7 +36,7 @@ function Header() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={{ marginBottom: "5%" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
@@ -114,15 +114,12 @@ function Header() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
+            <a href="/orders">
+              <Button style={{ color: "white" }}>Orders</Button>{" "}
+            </a>
+            <a href="/purchaseorder">
+              <Button style={{ color: "white" }}>Suppliers</Button>
+            </a>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

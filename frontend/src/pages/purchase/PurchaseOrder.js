@@ -31,7 +31,6 @@ import Header from "../../components/Header";
 function PurchaseOrder() {
   return (
     <div>
-      <Header />
       <div style={{ paddingTop: "5%", paddingBottom: "5%", height: "50%" }}>
         <MDBContainer fluid className="my-5">
           <MDBRow className="justify-content-center">
@@ -79,9 +78,11 @@ function PurchaseOrder() {
         <Button variant="contained" style={{ marginRight: "10px" }}>
           Edit Order
         </Button>
-        <Button variant="contained" style={{ marginRight: "10px" }}>
-          Approve Order
-        </Button>{" "}
+        <a href="/viewsuppliers">
+          <Button variant="contained" style={{ marginRight: "10px" }}>
+            Approve Order
+          </Button>{" "}
+        </a>{" "}
         <Button variant="contained">Decline Order</Button>
       </div>
     </div>

@@ -9,7 +9,9 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import TextField from "@mui/material/TextField";
 import Header from "../../components/Header";
-
+import { Button } from "@mui/material";
+import { useState, useEffect } from "react";
+import axios from "axios";
 const columns = [
   { id: "name", label: "Name", minWidth: 170 },
   { id: "code", label: "ISO\u00a0Code", minWidth: 100 },
@@ -72,9 +74,23 @@ export default function ViewSuppliers() {
     setPage(0);
   };
 
+  const [order, setOrder] = useState([]);
+  const getRequest = () => {
+    axios
+      .get(`http://localhost:9999/supplymanagement`)
+      .then((response) => {
+        setOrder(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getRequest();
+  }, [order]);
   return (
     <div>
-      <Header />
       <div className="search">
         <TextField
           id="outlined-multiline-flexible"
@@ -97,38 +113,38 @@ export default function ViewSuppliers() {
                 </TableCell>
               </TableRow>
               <TableRow>
-                {columns.map((column) => (
-                  <TableCell
-                    key={column.id}
-                    align={column.align}
-                    style={{ top: 57, minWidth: column.minWidth }}
-                  >
-                    {column.label}
-                  </TableCell>
-                ))}
+                <TableCell style={{ top: 57 }}>Supplier code</TableCell>
+                <TableCell style={{ top: 57 }}>Address</TableCell>
+                <TableCell style={{ top: 57 }}>Item code</TableCell>
+                <TableCell style={{ top: 57 }}>Quantity</TableCell>
+                <TableCell style={{ top: 57 }}>Unit Price</TableCell>
+                <TableCell style={{ top: 57 }}>Total Price</TableCell>
+                <TableCell style={{ top: 57 }}>watch</TableCell>
+                <TableCell style={{ top: 57 }}>Deliver Note</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows
+              {order
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
                   return (
-                    <TableRow
-                      hover
-                      role="checkbox"
-                      tabIndex={-1}
-                      key={row.code}
-                    >
-                      {columns.map((column) => {
-                        const value = row[column.id];
-                        return (
-                          <TableCell key={column.id} align={column.align}>
-                            {column.format && typeof value === "number"
-                              ? column.format(value)
-                              : value}
-                          </TableCell>
-                        );
-                      })}
+                    <TableRow hover role="checkbox">
+                      <TableCell>{row.suppliercode}</TableCell>
+                      <TableCell>{row.address}</TableCell>
+                      <TableCell>{row.itemcode}</TableCell>
+                      <TableCell>{row.quantity}</TableCell>
+                      <TableCell>{row.unitprice}</TableCell>
+                      <TableCell>{row.totalprice}</TableCell>
+                      <TableCell>
+                        <a href="/vieworder">
+                          <Button variant="contained"> Watch</Button>{" "}
+                        </a>
+                      </TableCell>
+                      <TableCell>
+                        <a href="/deliverynote">
+                          <Button variant="contained"> Action</Button>{" "}
+                        </a>
+                      </TableCell>
                     </TableRow>
                   );
                 })}

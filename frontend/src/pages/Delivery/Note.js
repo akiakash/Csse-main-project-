@@ -2,11 +2,11 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Header from "../../components/Header";
+import { Button } from "@mui/material";
 
 export default function Note() {
   return (
     <div>
-      <Header />
       <h1>Delivery Note</h1>
       <Box
         component="form"
@@ -42,6 +42,12 @@ export default function Note() {
             variant="standard"
           />
         </div>
+        <a href="/viewsuppliers">
+          <Button variant="contained"> Submit</Button>{" "}
+        </a>
+        <a href="/viewsuppliers">
+          <Button variant="contained"> Cancel</Button>{" "}
+        </a>
       </Box>
     </div>
   );

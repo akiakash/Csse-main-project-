@@ -9,19 +9,24 @@ import { render } from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SupplyOrders from "./pages/Suppliers/SupplyOrders";
 import ViewSuppliers from "./pages/Suppliers/ViewSuppliers";
+import FeaturedInfo from "./components/featuredInfo/FeaturedInfo";
+import Sidebar from "./components/sidebar/Sidebar";
+import Home from "./components/home/Home";
 
 function App() {
   return (
     <div className="App">
+      <Header />
       <BrowserRouter>
         <Routes>
+          <Route exact path="/" element={<Home />} />
           <Route path="/a" element={<SignIn />} />
-          <Route path="/a" element={<Orders />} />
-          <Route path="/a" element={<Note />} />
-          <Route path="/s" element={<PurchaseOrder />} />
-          <Route path="/A" element={<ViewOrder />} />
-          <Route path="/a" element={<SupplyOrders />} />
-          <Route path="/" element={<ViewSuppliers />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/deliverynote" element={<Note />} />
+          <Route path="/purchaseorder" element={<PurchaseOrder />} />
+          <Route path="/vieworder" element={<ViewOrder />} />
+          <Route path="/supply" element={<SupplyOrders />} />
+          <Route path="/viewsuppliers" element={<ViewSuppliers />} />
         </Routes>
       </BrowserRouter>
     </div>

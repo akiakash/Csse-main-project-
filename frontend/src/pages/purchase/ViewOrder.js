@@ -29,7 +29,6 @@ import Header from "../../components/Header";
 function ViewOrder() {
   return (
     <div>
-      <Header />
       <div style={{ paddingTop: "5%", paddingBottom: "5%", height: "50%" }}>
         <MDBContainer fluid className="my-5">
           <MDBRow className="justify-content-center">

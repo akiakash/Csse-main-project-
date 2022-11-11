@@ -28,8 +28,12 @@ app.get("/", (req, res) => {
 });
 
 const OrderManagement = require("./router/purchaseorders.router");
+const SupplyManagement = require("./router/suppliers.router");
+const DeliveryManagement = require("./router/delivery.router");
 
+app.use("/deliverymanagement", DeliveryManagement);
 app.use("/ordermanagement", OrderManagement);
+app.use("/supplymanagement", SupplyManagement);
 
 mongoose.connect(
   "mongodb+srv://akash:Akiakash1@cluster0.goear.mongodb.net/?retryWrites=true&w=majority",
