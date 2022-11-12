@@ -63,21 +63,6 @@ const rows = [
 ];
 
 export default function Orders() {
-  const [order, setOrder] = useState([]);
-  const getRequest = () => {
-    axios
-      .get(`http://localhost:9999/ordermanagement`)
-      .then((response) => {
-        setOrder(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  useEffect(() => {
-    getRequest();
-  }, [order]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -89,6 +74,22 @@ export default function Orders() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  const [orders, setOrders] = useState([]);
+  const getRequest = () => {
+    axios
+      .get(`http://localhost:9999/ordermanagement`)
+      .then((response) => {
+        setOrders(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getRequest();
+  }, [orders]);
 
   return (
     <div>
@@ -106,6 +107,12 @@ export default function Orders() {
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
+                <TableCell align="center" colSpan={2}></TableCell>
+                <TableCell align="center" colSpan={3}>
+                  Details
+                </TableCell>
+              </TableRow>
+              <TableRow>
                 <TableCell style={{ top: 57 }}>No</TableCell>
                 <TableCell style={{ top: 57 }}>Site Code</TableCell>
                 <TableCell style={{ top: 57 }}>Item Code</TableCell>
@@ -117,7 +124,7 @@ export default function Orders() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {order
+              {orders
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
                   return (
@@ -130,7 +137,7 @@ export default function Orders() {
                       <TableCell>{row.ldate}</TableCell>
                       <TableCell>
                         <a href="/purchaseorder">
-                          <Button> Action</Button>{" "}
+                          <Button variant="contained"> Action</Button>
                         </a>
                       </TableCell>
                     </TableRow>

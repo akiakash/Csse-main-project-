@@ -105,9 +105,7 @@ export default function ViewSuppliers() {
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
-                <TableCell align="center" colSpan={2}>
-                  Country
-                </TableCell>
+                <TableCell align="center" colSpan={2}></TableCell>
                 <TableCell align="center" colSpan={3}>
                   Details
                 </TableCell>
