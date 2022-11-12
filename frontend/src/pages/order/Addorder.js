@@ -27,7 +27,7 @@ export default function AddOrder() {
       .then((response) => {
         console.log("response : ", response);
         alert("successfullyy updated");
-        window.location = "/";
+        window.location = "/home";
       })
       .catch((error) => {
         console.log(error);
