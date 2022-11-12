@@ -43,6 +43,10 @@ export default function SignIn() {
     });
   };
 
+  function home() {
+    window.location = "/home";
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -56,7 +60,7 @@ export default function SignIn() {
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
+            <img src="/logo.png" style={{ width: "40px" }} />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
@@ -91,14 +95,17 @@ export default function SignIn() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
+
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={home}
             >
               Sign In
             </Button>
+
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

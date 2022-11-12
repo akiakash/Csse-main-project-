@@ -93,6 +93,7 @@ export default function Orders() {
 
   return (
     <div>
+         <Header />
       <div className="search">
         <TextField
           id="outlined-multiline-flexible"
@@ -106,6 +107,7 @@ export default function Orders() {
         <TableContainer sx={{ maxHeight: 440 }}>
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
+              /
               <TableRow>
                 <TableCell align="center" colSpan={2}></TableCell>
                 <TableCell align="center" colSpan={3}>

@@ -73,6 +73,7 @@ export default function SupplyOrders() {
 
   return (
     <div>
+      <Header />
       <Paper sx={{ width: "100%" }}>
         <TableContainer sx={{ maxHeight: 440 }}>
           <Table stickyHeader aria-label="sticky table">

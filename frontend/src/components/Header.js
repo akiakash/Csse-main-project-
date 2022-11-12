@@ -39,7 +39,6 @@ function Header() {
     <AppBar position="static" style={{ marginBottom: "5%" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -55,9 +54,8 @@ function Header() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            <img src="/logo.png" style={{ width: "50px" }} />
           </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -110,9 +108,7 @@ function Header() {
               color: "inherit",
               textDecoration: "none",
             }}
-          >
-            LOGO
-          </Typography>
+          ></Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <a href="/orders">
               <Button style={{ color: "white" }}>Orders</Button>{" "}
@@ -121,7 +117,6 @@ function Header() {
               <Button style={{ color: "white" }}>Suppliers</Button>
             </a>
           </Box>
-
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

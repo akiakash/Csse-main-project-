@@ -7,6 +7,7 @@ import { Button } from "@mui/material";
 export default function Note() {
   return (
     <div>
+      <Header />
       <h1>Delivery Note</h1>
       <Box
         component="form"

@@ -1,5 +1,5 @@
 import "./featuredInfo.css";
-
+import Header from "../Header";
 export default function FeaturedInfo() {
   function handleClickEmployee() {
     window.location = "/orders";
@@ -7,10 +7,11 @@ export default function FeaturedInfo() {
 
   return (
     <div>
+      <Header />
       <div className="featured">
         <div className="featuredItem">
           <div className="featuredMoneyContainer">
-            <img alt="employee" width={200} />
+            <img src="/download.png" alt="employee" width={200} />
           </div>
           <a href="/orders">
             <span className="featuredTitle">Orders</span>
@@ -18,9 +19,11 @@ export default function FeaturedInfo() {
         </div>
         <div className="featuredItem">
           <div className="featuredMoneyContainer">
-            <img alt="employee" width={200} />
+            <img src="/addorder.png" alt="employee" width={200} />
           </div>
-          <span className="featuredTitle">Customer</span>
+          <a href="/addorder">
+            <span className="featuredTitle">Add Order</span>
+          </a>
         </div>
       </div>
       <div
@@ -29,15 +32,19 @@ export default function FeaturedInfo() {
       >
         <div className="featuredItem">
           <div className="featuredMoneyContainer">
-            <img alt="employee" width={200} />
+            <img src="/supplier.png" alt="employee" width={200} />
           </div>
-          <span className="featuredTitle">Re-Order Material</span>
+          <a href="/addsupplier">
+            <span className="featuredTitle">Add Supplier</span>
+          </a>
         </div>
         <div className="featuredItem">
           <div className="featuredMoneyContainer">
-            <img alt="employee" width={200} />
+            <img src="/product.png" alt="employee" width={200} />
           </div>
-          <span className="featuredTitle">Employee</span>
+          <a href="/addproduct">
+            <span className="featuredTitle">Add Product</span>
+          </a>
         </div>
       </div>
     </div>

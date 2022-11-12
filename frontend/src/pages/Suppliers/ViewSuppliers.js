@@ -91,6 +91,7 @@ export default function ViewSuppliers() {
   }, [order]);
   return (
     <div>
+      <Header />
       <div className="search">
         <TextField
           id="outlined-multiline-flexible"

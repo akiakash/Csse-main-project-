@@ -12,21 +12,28 @@ import ViewSuppliers from "./pages/Suppliers/ViewSuppliers";
 import FeaturedInfo from "./components/featuredInfo/FeaturedInfo";
 import Sidebar from "./components/sidebar/Sidebar";
 import Home from "./components/home/Home";
+import AddOrder from "./pages/order/Addorder";
+import AddSupplier from "./pages/Suppliers/AdddSupplier";
+import AddProduct from "./pages/Product/AddProduct";
+import ViewProduct from "./pages/Product/ViewProducts";
 
 function App() {
   return (
     <div className="App">
-      <Header />
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/a" element={<SignIn />} />
+          <Route path="/" element={<SignIn />} />
+          <Route exact path="/home" element={<Home />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/deliverynote" element={<Note />} />
           <Route path="/purchaseorder" element={<PurchaseOrder />} />
           <Route path="/vieworder" element={<ViewOrder />} />
           <Route path="/supply" element={<SupplyOrders />} />
           <Route path="/viewsuppliers" element={<ViewSuppliers />} />
+          <Route path="/addorder" element={<AddOrder />} />
+          <Route path="/addsupplier" element={<AddSupplier />} />
+          <Route path="/addproduct" element={<AddProduct />} />
+          <Route path="/viewproduct" element={<ViewProduct />} />
         </Routes>
       </BrowserRouter>
     </div>

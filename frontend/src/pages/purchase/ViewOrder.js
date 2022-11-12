@@ -29,6 +29,7 @@ import Header from "../../components/Header";
 function ViewOrder() {
   return (
     <div>
+      <Header />
       <div style={{ paddingTop: "5%", paddingBottom: "5%", height: "50%" }}>
         <MDBContainer fluid className="my-5">
           <MDBRow className="justify-content-center">
@@ -41,7 +42,7 @@ function ViewOrder() {
                   className="px-3 pt-3 pb-2"
                 />
                 <MDBCardImage
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/3.webp"
+                  src="/product1.png"
                   position="top"
                   alt="Apple Computer"
                 />
