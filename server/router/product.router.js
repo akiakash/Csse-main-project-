@@ -28,25 +28,25 @@ router.get("/", async (req, res) => {
   }
 });
 
-// router.get("/:deliveryid", async (req, res) => {
-//   try {
-//     const delivery = await Delivery.findById(req.params.deliveryid);
-//     res.json(delivery);
-//   } catch (err) {
-//     res.json({ message: err });
-//   }
-// });
+router.get("/:productid", async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.productid);
+    res.json(product);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
 
-// router.delete("/:deliveryid", async (req, res) => {
-//   try {
-//     const removeDelivery = await Delivery.remove({
-//       _id: req.params.deliveryid,
-//     });
-//     res.json(removeDelivery);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
+router.delete("/:productid", async (req, res) => {
+  try {
+    const removeProduct = await Product.remove({
+      _id: req.params.productid,
+    });
+    res.json(removeProduct);
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 // router.patch("/:deliveryid", async (req, res) => {
 //   try {

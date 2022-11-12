@@ -116,6 +116,9 @@ function Header() {
             <a href="/purchaseorder">
               <Button style={{ color: "white" }}>Suppliers</Button>
             </a>
+            <a href="/">
+              <Button style={{ color: "white" }}>Log Out</Button>
+            </a>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
